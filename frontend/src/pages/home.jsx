@@ -20,7 +20,7 @@ function Home() {
   const fetchPosts = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/posts"
+        "https://threew-social-app-backend-9f4v.onrender.com/api/posts"
       );
 
       setPosts(response.data.posts || []);
@@ -65,7 +65,7 @@ function Home() {
       }
 
       await axios.post(
-        "http://localhost:5000/api/posts",
+        "https://threew-social-app-backend-9f4v.onrender.com/api/posts",
         formData,
         {
           headers: {
@@ -116,8 +116,7 @@ function Home() {
       }));
 
       await axios.post(
-        `http://localhost:5000/api/posts/${postId}/like`,
-        {},
+        `https://threew-social-app-backend-9f4v.onrender.com/api/posts/${postId}/like`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -164,7 +163,7 @@ function Home() {
       }));
 
       await axios.post(
-        `http://localhost:5000/api/posts/${postId}/comment`,
+        `https://threew-social-app-backend-9f4v.onrender.com/api/posts/${postId}/comment`,
         {
           text: text.trim(),
         },
@@ -531,7 +530,7 @@ function Home() {
                       src={
                         post.image.startsWith("http")
                           ? post.image
-                          : `http://localhost:5000${post.image}`
+                          : `https://threew-social-app-backend-9f4v.onrender.com${post.image}`
                       }
                       alt="Post"
                       className="post-image"
