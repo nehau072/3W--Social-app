@@ -14,12 +14,24 @@ function App() {
 
         {/* HOME */}
         <Route
-          path="/"
+          path="/home"
           element={
             isLoggedIn() ? (
               <Home />
             ) : (
-              <Navigate to="/signup" replace />
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        {/* ROOT */}
+        <Route
+          path="/"
+          element={
+            isLoggedIn() ? (
+              <Navigate to="/home" replace />
+            ) : (
+              <Navigate to="/login" replace />
             )
           }
         />
@@ -29,7 +41,7 @@ function App() {
           path="/signup"
           element={
             isLoggedIn() ? (
-              <Navigate to="/" replace />
+              <Navigate to="/home" replace />
             ) : (
               <Signup />
             )
@@ -41,14 +53,14 @@ function App() {
           path="/login"
           element={
             isLoggedIn() ? (
-              <Navigate to="/" replace />
+              <Navigate to="/home" replace />
             ) : (
               <Login />
             )
           }
         />
 
-        {/* ANY UNKNOWN URL */}
+        {/* UNKNOWN URL */}
         <Route
           path="*"
           element={<Navigate to="/" replace />}

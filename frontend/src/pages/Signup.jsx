@@ -34,7 +34,7 @@ function Signup() {
       setLoading(true);
 
       await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "https://threew-social-app-backend-9f4v.onrender.com/api/auth/signup",
         {
           username: form.username.trim(),
           email: form.email.trim(),

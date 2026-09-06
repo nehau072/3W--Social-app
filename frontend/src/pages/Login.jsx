@@ -1,11 +1,8 @@
-
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
-  const navigate = useNavigate();
-
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -29,7 +26,7 @@ function Login() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://threew-social-app-backend-9f4v.onrender.com/api/auth/login",
         {
           email: form.email.trim(),
           password: form.password,
@@ -45,11 +42,8 @@ function Login() {
 
       setMessage("Login successful! Redirecting...");
 
-      // Redirect to Homepage
-      setTimeout(() => {
-        navigate("/home");
-      }, 700);
-
+      // Redirect to Home after token is saved
+      window.location.href = "/home";
     } catch (error) {
       setMessage(
         error.response?.data?.message ||
@@ -62,7 +56,6 @@ function Login() {
 
   return (
     <div className="auth-page">
-
       {/* LEFT SECTION */}
       <div className="auth-brand-section">
         <div className="auth-brand">
@@ -110,7 +103,6 @@ function Login() {
       {/* RIGHT SECTION */}
       <div className="auth-form-section">
         <div className="signup-card">
-
           {/* Mobile Logo */}
           <div className="mobile-brand">
             <div className="mobile-brand-icon">W</div>
@@ -132,7 +124,6 @@ function Login() {
 
           {/* Login Form */}
           <form onSubmit={handleSubmit}>
-
             <div className="form-group">
               <label>Email</label>
 
@@ -168,7 +159,6 @@ function Login() {
             >
               {loading ? "Logging In..." : "Login →"}
             </button>
-
           </form>
 
           {/* Message */}
@@ -194,7 +184,6 @@ function Login() {
             By continuing, you agree to our community
             guidelines.
           </p>
-
         </div>
       </div>
     </div>
@@ -202,5 +191,3 @@ function Login() {
 }
 
 export default Login;
-
-
